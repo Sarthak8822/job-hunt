@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/utils/cn";
 import { Spotlight } from "@/components/ui/Spotlight";
+import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { jobsList } from "@/data/jobsList";
 
 interface Job {
@@ -21,6 +22,30 @@ interface Job {
   job_employment_type: string;
   job_apply_link: string;
 }
+
+const loadingStates = [
+  {
+    text: "Setting up...",
+  },
+  {
+    text: "Setting up the Keys for the API",
+  },
+  {
+    text: "Validating the keys",
+  },
+  {
+    text: "Keys validated",
+  },
+  {
+    text: "Searching every job with your keyword",
+  },
+  {
+    text: "Getting all the Jobs",
+  },
+  {
+    text: "Here it is!",
+  },
+];
 
 export default function Jobslisting() {
   const [query, setQuery] = React.useState("");
@@ -50,7 +75,8 @@ export default function Jobslisting() {
   };
 
   return (
-    <div className="h-screen w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden mx-auto py-10 md:py-0 ">
+    <div className="h-screen w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden mx-auto py-10 md:py-0">
+      <Loader loadingStates={loadingStates} loading={loading} duration={1000} />
       <div className="z-10 overflow-y-auto max-h-[200rem]">
         <h1 className="text-3xl mt-32 font-bold mb-5 text-center">Jobs List</h1>
         <div className="flex justify-center items-center">
@@ -75,12 +101,8 @@ export default function Jobslisting() {
           </form>
         </div>
         <div className="h-auto overflow-hidden">
-          {loading ? (
-            <div className="flex justify-center items-center">
-              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
-            </div>
-          ) : (
-            <div className="flex flex-wrap justify-center items-center gap-4 my-10">
+          {!loading && (
+            <div className="flex flex-wrap justify-center items-center gap-4 my-10 mx-8">
               {jobsData &&
                 jobsData.map((job, index) => (
                   <div key={index}>

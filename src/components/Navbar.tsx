@@ -34,7 +34,12 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="https://takeuforward.org/" target="_blank">
               Striver
             </HoveredLink>
-            <HoveredLink href="#">Love Babbar</HoveredLink>
+            <HoveredLink
+              href="https://www.codingninjas.com/studio/problem-lists/love-babbar-dsa-sheet-problems"
+              target="_blank"
+            >
+              Love Babbar
+            </HoveredLink>
             <HoveredLink
               href="https://drive.google.com/file/d/1F2tvjs-xzd0bvF3oyAeupsLlN0gznpW8/view?usp=sharing"
               target="_blank"

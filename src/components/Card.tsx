@@ -38,8 +38,8 @@ export function Card({ job }: { job: Job }) {
             loader={() => job.employer_logo}
             src={job.employer_logo}
             alt="employer_logo"
-            height="400"
-            width="400"
+            height="200"
+            width="200"
             className="object-contain"
           />
         )}
