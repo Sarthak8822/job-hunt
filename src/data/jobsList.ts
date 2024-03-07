@@ -26,7 +26,6 @@ let options = {
 
 export const jobsList = async (query: string) => {
   try {
-    console.log("Query:", query);
     let response = await axios.get(`${apiUrl}?query=${encodeURIComponent(query)}&page=1&num_pages=10`, options);
     // console.log("RESPONSE: ", response.data)
     if(response.data.status == 403){

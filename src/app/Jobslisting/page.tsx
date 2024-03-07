@@ -9,37 +9,37 @@ import { Spotlight } from "@/components/ui/Spotlight";
 import { jobsList } from "@/data/jobsList";
 
 interface Job {
+  job_id: string;
   employer_name: string;
   employer_logo: string;
   job_title: string;
   job_description: string;
-  job_apply_link: string;
+  job_highlights: {
+    Qualifications: string[];
+  };
   job_country: string;
+  job_employment_type: string;
+  job_apply_link: string;
 }
 
 export default function Jobslisting() {
   const [query, setQuery] = React.useState("");
   const [jobsData, setJobsData] = React.useState<Job[]>([]);
   const [loading, setLoading] = React.useState(false);
-  const employer_logo = "";
-  const employer_name = "navbakhv";
-  const job_title = "navbakhv";
-  const job_id = "navbakhv";
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const jobsAPIResponse = await jobsList(query);
-      console.log("Data", jobsAPIResponse.data);
       const list = jobsAPIResponse.data;
       setJobsData(list);
     } catch (error) {
-      console.error("Error fetching weather:", error);
+      console.error("Error fetching Jobs:", error);
+    } finally {
+      setLoading(false);
     }
   };
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // setFilter(event.target.value);
-    setQuery(event.target.value);
-  };
+
   const BottomGradient = () => {
     return (
       <>
@@ -50,7 +50,7 @@ export default function Jobslisting() {
   };
 
   return (
-    <div className="h-auto w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden mx-auto py-10 md:py-0">
+    <div className="h-screen w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden mx-auto py-10 md:py-0 ">
       <div className="z-10 overflow-y-auto max-h-[200rem]">
         <h1 className="text-3xl mt-32 font-bold mb-5 text-center">Jobs List</h1>
         <div className="flex justify-center items-center">
@@ -74,20 +74,22 @@ export default function Jobslisting() {
             </button>
           </form>
         </div>
-        {loading ? (
-          <div className="flex justify-center items-center">
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
-          </div>
-        ) : (
-          <div className="flex flex-wrap justify-center items-center gap-4 my-10">
-            {jobsData &&
-              jobsData.map((job, index) => (
-                <div key={index}>
-                  <Card job={job} />
-                </div>
-              ))}
-          </div>
-        )}
+        <div className="h-auto overflow-hidden">
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
+            </div>
+          ) : (
+            <div className="flex flex-wrap justify-center items-center gap-4 my-10">
+              {jobsData &&
+                jobsData.map((job, index) => (
+                  <div key={index}>
+                    <Card job={job} />
+                  </div>
+                ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

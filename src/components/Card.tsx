@@ -2,19 +2,34 @@
 import React from "react";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { IconAppWindow } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface Job {
+  job_id: string;
   employer_name: string;
   employer_logo: string;
   job_title: string;
   job_description: string;
-  job_apply_link: string;
+  job_highlights: {
+    Qualifications: string[];
+  };
   job_country: string;
+  job_employment_type: string;
+  job_apply_link: string;
 }
 
 export function Card({ job }: { job: Job }) {
   console.log(job.employer_name);
+  const router = useRouter();
+  const openJobPage = async (job_id: string) => {
+    try {
+      window.open(`/Jobslisting/${job_id}`, "_blank")
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
@@ -41,7 +56,7 @@ export function Card({ job }: { job: Job }) {
           </p>
         )}
         <div className="flex justify-center items-center">
-          <button className="shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+          <button className="shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400" onClick={()=>openJobPage(job.job_id)}>
             More
           </button>
         </div>

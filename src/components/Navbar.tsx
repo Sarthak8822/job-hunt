@@ -43,20 +43,20 @@ function Navbar({ className }: { className?: string }) {
             </HoveredLink>
           </div>
         </MenuItem>
-        <Link href="#">
+        {/* <Link href="#">
           <MenuItem
             setActive={setActive}
             active={active}
             item="ResumeBuilder"
           ></MenuItem>
-        </Link>
-        <Link href="#">
+        </Link> */}
+        {/* <Link href="#">
           <MenuItem
             setActive={setActive}
             active={active}
             item="About Me"
           ></MenuItem>
-        </Link>
+        </Link> */}
       </Menu>
     </div>
   );
