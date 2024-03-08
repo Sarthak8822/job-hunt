@@ -61,7 +61,7 @@ export default function JobPage({ params }: any) {
 
   return (
     <div className="h-auto w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden  py-10 md:py-0">
-      <Loader loadingStates={loadingStates} loading={loading} duration={1000} />
+      <Loader loadingStates={loadingStates} loading={loading} duration={1500} />
       {!loading && (
         <div className="z-10 container mx-auto overflow-y-auto max-h-[200rem] text-center">
           {data && (
@@ -101,7 +101,7 @@ export default function JobPage({ params }: any) {
                 </div>
               )}
               {data.job_highlights.Responsibilities && (
-                <div className="mx-4 mb-10 flex flex-col items-center">
+                <div className="mx-8 mb-10 flex flex-col items-center">
                   <h1 className="text-2xl mb-5">Responsibilities:</h1>
                   <ul className="text-justify mb-5 list-disc mx-auto">
                     {data.job_highlights.Responsibilities.map(
