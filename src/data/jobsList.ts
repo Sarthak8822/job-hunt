@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 const apiUrl = process.env.API_URL;
-console.log("APIURL:", apiUrl)
 const apiKey = process.env.RAPIDAPI_KEY || '';
 const apiHost = process.env.RAPIDAPI_HOST || '';
 
