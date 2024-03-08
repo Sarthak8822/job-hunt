@@ -1,18 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+# Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Sarthak8822/job-hunt
+   
+2. Create a .env file in the root of the project and add your configuration:
+
+    ```env
+    API_URL=your_jsearch_api_url_with_search_endpoint
+    JOBDETAILS_API_URL=your_jsearch_api_url_with_job-details_endpoint
+    RAPIDAPI_KEY=your_api_key_1,your_api_key_2,your_api_key_3
+    RAPIDAPI_HOST=jsearch.p.rapidapi.com
+
+  Replace your_api_key_1 etc., your_jsearch_api_url_with_search_endpoint, your_jsearch_api_url_with_job-details_endpoint with your actual API keys and MongoDB configuration.
+
+3. Install dependencies:
+
+    ```env
+    npm install
+
+4. Run the application::
+
+    ```env
+    npm run dev
+    
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
