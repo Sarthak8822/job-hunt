@@ -66,17 +66,17 @@ function Footer() {
         <div className="p-5">
           <ul>
             <p className="text-gray-400 font-bold text-2xl pb-4">
-              Many more to
+              Many more to come...
             </p>
           </ul>
         </div>
       </div>
       <div className="flex flex-col justify-center items-center text-center  p-5 bg-gray-900">
         <h1 className=" text-gray-400 font-semibold">
-          © 2024 All rights reserved | Build with ❤ by{" "}
+          © 2024 All rights reserved | Build with ❤ by the{" "}
           <Link href="https://github.com/Sarthak8822">
             <span className="hover:text-blue-400 font-semibold cursor-pointer">
-              Sarthak{" "}
+              Me{" "}
             </span>
           </Link>
         </h1>

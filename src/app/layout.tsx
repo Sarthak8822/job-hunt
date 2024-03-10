@@ -28,9 +28,9 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
-        <div className="relative w-full flex flex-col items-center justify-center">
-          <Footer />
-        </div>
+        {/* <div className="relative  flex flex-col items-center justify-center"> */}
+        <Footer />
+        {/* </div> */}
       </body>
     </html>
   );
