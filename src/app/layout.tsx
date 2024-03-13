@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Spotlight } from "@/components/ui/Spotlight";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
+        <Analytics />
         {/* <div className="relative  flex flex-col items-center justify-center"> */}
         <Footer />
         {/* </div> */}

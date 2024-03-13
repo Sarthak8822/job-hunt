@@ -11,6 +11,7 @@
   "dependencies": {
     "@radix-ui/react-label": "^2.0.2",
     "@tabler/icons-react": "^2.47.0",
+    "@vercel/analytics": "^1.2.2",
     "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
