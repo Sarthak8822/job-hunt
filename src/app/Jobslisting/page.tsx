@@ -88,7 +88,7 @@ export default function Jobslisting() {
               id="Search Jobs"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for jobs..."
+              placeholder="Search for jobs like 'SDE-1 or SDE Intern'"
               className="text-black border p-2 mb-2 sm:mb-0 sm:mr-2 rounded-md focus:outline-none focus:ring focus:border-blue-300 px-5"
             />
             <button
