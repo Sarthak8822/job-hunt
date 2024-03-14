@@ -33,7 +33,7 @@ export const jobData = async (job_id: string) => {
         }
         return response.data;
     } catch (error) {
-        console.error('Error fetching weather:', error);
+        console.error('Error fetching job:', error);
         throw error;
     }
 };
