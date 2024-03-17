@@ -50,6 +50,7 @@ const loadingStates = [
 export default function Jobslisting() {
   const [query, setQuery] = React.useState("");
   const [jobsData, setJobsData] = React.useState<Job[]>([]);
+  const [dbjobsData, setDbJobsData] = React.useState<Job[]>([]);
   const [loading, setLoading] = React.useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,6 +102,7 @@ export default function Jobslisting() {
           </form>
         </div>
         <div className="h-auto overflow-hidden">
+
           {!loading && (
             <div className="flex flex-wrap justify-center items-center gap-4 my-10 mx-8">
               {jobsData &&
