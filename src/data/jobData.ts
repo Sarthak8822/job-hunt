@@ -24,16 +24,22 @@ let options = {
 };
 
 export const jobData = async (job_id: string) => {
-    try {
-        let response = await axios.get(`${apiUrl}?job_id=${(`${job_id}`)}&extended_publisher_details=false`, options);
-        if (response.data.status == 403) {
-            console.log("RapidAPI key limit reached. Please wait and try again later.");
-            options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
-            response = await axios.get(`${apiUrl}?job_id=${(`${job_id}`)}&extended_publisher_details=false`, options);
+    while (currentKeyIndex < apiKey.split(',').length) {
+        try {
+            let response = await axios.get(`${apiUrl}?job_id=${(`${job_id}`)}&extended_publisher_details=false`, options);
+            if (response.data == undefined || response.data.status == 403) {
+                console.log("RapidAPI key limit reached. Please wait and try again later.");
+                options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
+                response = await axios.get(`${apiUrl}?job_id=${(`${job_id}`)}&extended_publisher_details=false`, options);
+            }
+            return response.data;
+        } catch (error: any) {
+            if (error || error.code === 'ERR_BAD_REQUEST') {
+                console.log("Request failed. Retrying with new key...");
+                options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
+            } else {
+                throw error;
+            }
         }
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching job:', error);
-        throw error;
     }
 };
