@@ -73,7 +73,7 @@ function Footer() {
       </div>
       <div className="flex flex-col justify-center items-center text-center  p-5 bg-gray-900">
         <h1 className=" text-gray-400 font-semibold">
-          © 2024 All rights reserved | Built with ❤ by {" "}
+          © 2024 All rights reserved | Built with ❤ by {" Sarthak Modhe "}
           <Link href="https://github.com/Sarthak8822">
             <span className="hover:text-blue-400 font-semibold cursor-pointer">
               Me{" "}

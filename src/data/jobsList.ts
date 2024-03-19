@@ -26,15 +26,22 @@ let options = {
 export const jobsList = async (query: string) => {
   try {
     let response = await axios.get(`${apiUrl}?query=${encodeURIComponent(query)}&page=1&num_pages=10`, options);
-    // console.log("RESPONSE: ", response.data)
-    if(response.data.status == 403){
+    console.log("RESPONSE: ", response.data)
+    if(response.data == undefined || response.data.status == 403){
       console.log("RapidAPI key limit reached. Please wait and try again later.");
       options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
       response = await axios.get(`${apiUrl}?query=${encodeURIComponent(query)}&page=1&num_pages=10`, options);
     }
     return response.data;
-  } catch (error) {
-    console.error('Error fetching job:', error);
+  } catch (error: any) {
+    console.error('Error fetching job:', error.code);
+    if(error.code==='ERR_BAD_REQUEST'){
+      console.log("RapidAPI key limit reached. Please wait and try again later.");
+      let response;
+      options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
+      response = await axios.get(`${apiUrl}?query=${encodeURIComponent(query)}&page=1&num_pages=10`, options);
+      return response.data;
+    }
     throw error;
   }
 };
