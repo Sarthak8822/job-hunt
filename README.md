@@ -26,6 +26,16 @@
 
     ```env
     npm run dev
+
+
+
+# Contribute
+
+1. Fork the repository:
+
+2. Create a Pull Request
+
+3. I'll merge it, it's that simple!
     
 
 
