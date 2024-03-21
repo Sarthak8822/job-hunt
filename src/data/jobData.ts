@@ -35,7 +35,7 @@ export const jobData = async (job_id: string) => {
             return response.data;
         } catch (error: any) {
             if (error || error.code === 'ERR_BAD_REQUEST') {
-                console.log("Request failed. Retrying with new key...");
+                console.log("Retrying with new key...");
                 options.headers['X-RapidAPI-Key'] = getNextRapidApiKey();
             } else {
                 throw error;
